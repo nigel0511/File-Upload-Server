@@ -1,6 +1,5 @@
 import express, { Request, Response, Router, NextFunction } from "express";
 import { MetaService } from "../service/MetaService";
-import { AppDataSource } from "../common/data-source";
 import { upload } from "../multer/config";
 
 const router: Router = express.Router();
@@ -14,7 +13,6 @@ router.post(
       // Validate the incoming data, you can also use a validation library like `class-validator`
       const { title, startDateTime, location, fileSize, format } = req.body;
 
-      console.log("body", req.body);
       // Ensure the required fields are provided
       if (!title || !startDateTime || !fileSize || !format) {
         res.status(400).json({ message: "Missing required fields" });
